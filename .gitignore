@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Telegram bot api key file
+bot_apikey.txt
+# Bot logging
+log.txt
