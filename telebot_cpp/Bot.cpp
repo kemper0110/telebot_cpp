@@ -35,14 +35,16 @@ void Bot::checkUpdates() {
 	if (!result_array.empty()) {
 		offset = result_array.back()["update_id"].get<int>() + 1;
 		std::ofstream("log.txt", std::ios::app) << std::setw(4) << result_array << std::endl;
-		for (auto v : result_array) {
+		for (const auto v : result_array) {
 			// only to handle messages
-			if(auto i = v.find("message"); i != v.end())
+			if(const auto i = v.find("message"); i != v.end())
 				onMessageHandler(this, i->get<Message>());
 		}
 	}
 	//std::cout << "long_polling timeout\n";
 }
+
+
 Bot& Bot::sendMessage(int chat_id, std::string text, int reply_to_message_id = 0) {
 	const std::string command = "/sendMessage";
 	curlpp::Easy request;
